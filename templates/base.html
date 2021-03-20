@@ -67,33 +67,29 @@
     {% block header %}
     <div role="banner" id="masthead">
         <header>
-            {% if GRAVATAR %}
-            <a href="/"><img src="{{ GRAVATAR }}" alt="Avatar" class="gravatar"></a>
-            {% elif LOGO %}
-            <a href="/"><img src="{{ SITEURL }}/images/{{ LOGO }}" alt="Logo"></a>
-            {% else %}
-            <h1><a href="/">{{ FIRST_NAME }}'s Blog</a></h1>
-            {% endif %}
-            <a href="#menu" id="menu-link">more stuff</a>
-            <nav id="menu">
-                <ul>
-                    {% if DISPLAY_PAGES_ON_MENU %}
-                      {% for p in pages %}
-                        <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.slug }}</a></li>
-                      {% endfor %}
-                    {% endif %}
-                    {% for title, link in MENUITEMS %}
-                        <li><a href="{{ link }}">{{ title }}</a></li>
-                    {% endfor %}
-                    {% if DISPLAY_CATEGORIES_ON_MENU %}
-                        {% for cat, null in categories %}
-                            {% if cat != "misc" %}
-                            <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                            {% endif %}
+            <div><a href="/"><img src="{{ SITEURL }}/images/{{ LOGO }}" alt="Logo"></a></div>
+            <div>
+                <a href="#menu" id="menu-link">&equiv;</a>
+                <nav id="menu">
+                    <ul>
+                        {% if DISPLAY_PAGES_ON_MENU %}
+                          {% for p in pages %}
+                            <li{% if p == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.slug }}</a></li>
+                          {% endfor %}
+                        {% endif %}
+                        {% for title, link in MENUITEMS %}
+                            <li><a href="{{ link }}">{{ title }}</a></li>
                         {% endfor %}
-                    {% endif %}
-                </ul>
-            </nav>
+                        {% if DISPLAY_CATEGORIES_ON_MENU %}
+                            {% for cat, null in categories %}
+                                {% if cat != "misc" %}
+                                <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
         </header>
     </div>
     {% endblock header %}
