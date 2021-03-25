@@ -42,9 +42,9 @@
         <footer>
             <a name="top"></a>
             <p>
-              <time datetime=" {{ page.date }}">
-                <script>document.write(moment('{{ page.date }}').format('LL'));</script>
-              </time>
+              <time datetime="{{ article.locale_date }}">
+                {{ article.locale_date }}
+            </time>
             </p>
         </footer>
       {% endif %}
